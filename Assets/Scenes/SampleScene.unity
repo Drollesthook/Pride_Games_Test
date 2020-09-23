@@ -196,9 +196,9 @@ RectTransform:
   m_Father: {fileID: 532787114}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 283, y: 154}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -105, y: -88}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115699035
@@ -365,9 +365,9 @@ RectTransform:
   m_Father: {fileID: 532787114}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21, y: 200}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 21, y: -42}
   m_SizeDelta: {x: 275.41577, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &437382123
@@ -688,9 +688,9 @@ RectTransform:
   m_Father: {fileID: 532787114}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -275, y: 202}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 113, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675608656
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be32cec17bc2c546af7928d9eca664f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameConfigsPath: /_PrideGameTest/Resourses/GameConfigs
+  _gameConfigsPath: GameConfigs/GameConfig
 --- !u!1 &1790993853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,9 +1230,9 @@ RectTransform:
   m_Father: {fileID: 532787114}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 283, y: 200}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -105, y: -42}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1790993855
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _platformSize: 5
-  _levelConfigsPath: /_PrideGameTest/Resourses/LevelConfigs
+  _levelConfigsPath: LevelConfigs
 --- !u!1 &1863832386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,9 +1459,9 @@ RectTransform:
   m_Father: {fileID: 532787114}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 21, y: -168}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 21, y: 74}
   m_SizeDelta: {x: 275.4157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1948256276

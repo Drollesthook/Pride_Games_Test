@@ -2,6 +2,8 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour {
@@ -19,6 +21,7 @@ public class LevelGenerator : MonoBehaviour {
     int _currentLevelObjectsAmount;
     Vector2 _maxBound, _minBound;
     GameLevelConfigs[] _gameLevelConfigs;
+    Object[] _gameLevelConfigObjects;
     
     class GameLevelConfigs {
         public int FieldSize = default;
@@ -37,12 +40,13 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     void LoadConfigs() {
-        _gameLevelConfigs = new GameLevelConfigs[Directory.GetFiles(Application.dataPath + _levelConfigsPath, "*.json").Length];
-        int i = 0;
-        foreach (string file in Directory.GetFiles(Application.dataPath + _levelConfigsPath, "*.json")) {
-            string currentJson = File.ReadAllText(file);
-            _gameLevelConfigs[i] = JsonUtility.FromJson<GameLevelConfigs>(currentJson);
-            i++;
+        _gameLevelConfigObjects = Resources.LoadAll(_levelConfigsPath, typeof(TextAsset));
+        _gameLevelConfigs = new GameLevelConfigs[_gameLevelConfigObjects.Length];
+        for (var i = 0; i < _gameLevelConfigObjects.Length; i++) {
+            Object file = _gameLevelConfigObjects[i];
+            var currentJson = file as TextAsset;
+            if (currentJson != null)
+                _gameLevelConfigs[i] = JsonUtility.FromJson<GameLevelConfigs>(currentJson.text);
         }
     }
 

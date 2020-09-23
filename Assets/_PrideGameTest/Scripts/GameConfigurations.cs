@@ -11,7 +11,8 @@ public class GameConfigurations : MonoBehaviour {
     }
 
     [SerializeField] string _gameConfigsPath = default;
-    
+
+    Object _gameConfigObject;
     static GameConfigurations _instance;
     GameConfigs _currentGameConfigs;
 
@@ -21,7 +22,9 @@ public class GameConfigurations : MonoBehaviour {
     }
 
     void LoadConfigs() {
-        string currentJson = File.ReadAllText(Application.dataPath + _gameConfigsPath + "/GameConfig.json");
-        _currentGameConfigs = JsonUtility.FromJson<GameConfigs>(currentJson);
+        _gameConfigObject = Resources.Load(_gameConfigsPath, typeof(TextAsset));
+        var currentJson = _gameConfigObject as TextAsset;
+        if (currentJson != null)
+            _currentGameConfigs = JsonUtility.FromJson<GameConfigs>(currentJson.text);
     }
 }
