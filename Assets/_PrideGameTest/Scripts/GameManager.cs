@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     static GameManager _instance;
     public static GameManager Instance => _instance;
-        public event Action LevelStarted, LevelEnded, GamePaused, GameContinued;
+        public event Action LevelStarted, LevelEnded;
         // Start is called before the first frame update
         void Awake() {
             _instance = this;

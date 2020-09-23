@@ -14,6 +14,8 @@ public class LevelGenerator : MonoBehaviour {
     public static LevelGenerator Instance => _instance;
     public int CurrentLevelObjectsAmount => _currentLevelObjectsAmount;
     public event Action LevelGenerated;
+    public (Vector2 min, Vector2 max) PlayerMovementClamp => CalculateClampVector();
+    
     [SerializeField] float _platformSize = default;
     [SerializeField] string _levelConfigsPath = default;
     
@@ -21,11 +23,11 @@ public class LevelGenerator : MonoBehaviour {
     List<Platform> _currentLevelPlatforms = new List<Platform>();
     
     int _currentLevelObjectsAmount;
-
+    Vector2 _maxBound, _minBound;
     
-    struct GameLevelConfigs {
-        public int FieldSize;
-        public int MaximumAmountOfObjects;
+    class GameLevelConfigs {
+        public int FieldSize = default;
+        public int MaximumAmountOfObjects = default;
     }
 
     GameLevelConfigs[] _gameLevelConfigs;
@@ -59,6 +61,14 @@ public class LevelGenerator : MonoBehaviour {
        PlacePlatforms(_currentLevelConfig.FieldSize);
        SpawnInteractableObjects();
        LevelGenerated?.Invoke();
+    }
+
+    (Vector2 min, Vector2 max) CalculateClampVector() {
+        _minBound.x = -_platformSize / 2;
+        _minBound.y = -_platformSize / 2;
+        _maxBound.x = _platformSize * _currentLevelConfig.FieldSize - _platformSize / 2;
+        _maxBound.y = _platformSize * _currentLevelConfig.FieldSize - _platformSize / 2;
+        return (_minBound,  _maxBound);
     }
 
     void PlacePlatforms(int fieldSize) {

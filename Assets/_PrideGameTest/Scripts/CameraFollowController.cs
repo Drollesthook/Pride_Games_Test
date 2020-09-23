@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 public class CameraFollowController : MonoBehaviour {
-   [SerializeField] Transform _objectToFollow;
-   [SerializeField] Vector3 _offset;
-   [SerializeField] float _followSpeed, _lookSpeed;
+   [SerializeField] Transform _objectToFollow = default;
+   [SerializeField] Vector3 _offset = default;
+   [SerializeField] float _followSpeed = default, _lookSpeed = default;
 
    void LateUpdate() {
       LookAtTarget();

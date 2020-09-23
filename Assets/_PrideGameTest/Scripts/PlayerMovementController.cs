@@ -9,20 +9,24 @@ public class PlayerMovementController : MonoBehaviour {
     CharacterController _characterController;
     int _playerSpeed;
     Vector3 _startPosition;
+    Vector2 _minBound, _maxBound;
+    const int _playerYPosition = 1;
     void Awake() {
-        _playerSpeed = GameConfigurations.Instance.CurrentGameConfigs.PlayerSpeed;
         _playerController = new PlayerController();
         _playerController.Enable();
         _characterController = GetComponent<CharacterController>();
     }
 
     void Start() {
+        _playerSpeed = GameConfigurations.Instance.CurrentGameConfigs.PlayerSpeed;
         _startPosition = transform.position;
         GameManager.Instance.LevelStarted += OnLevelStarted;
+        LevelGenerator.Instance.LevelGenerated += OnLevelGenerated;
     }
 
     void OnDestroy() {
         GameManager.Instance.LevelStarted -= OnLevelStarted;
+        LevelGenerator.Instance.LevelGenerated -= OnLevelGenerated;
         
     }
 
@@ -31,15 +35,19 @@ public class PlayerMovementController : MonoBehaviour {
     }
 
     void OnLevelStarted() {
-        print(_startPosition);
         transform.position = _startPosition;
+    }
+
+    void OnLevelGenerated() {
+        _minBound = LevelGenerator.Instance.PlayerMovementClamp.min;
+        _maxBound = LevelGenerator.Instance.PlayerMovementClamp.max;
     }
 
     void Move() {
         _moveDirection = _playerController.Player.Move.ReadValue<Vector2>();
         Vector3 newMoveDirection = new Vector3(_moveDirection.x, 0, _moveDirection.y) * _playerSpeed * Time.deltaTime;
-        //_characterController.Move(newMoveDirection);
         var newPosition = transform.position + newMoveDirection;
-        transform.position = newPosition;
+        var clampedPosition = new Vector3(Mathf.Clamp(newPosition.x,_minBound.x, _maxBound.x), _playerYPosition, Mathf.Clamp(newPosition.z, _minBound.y, _maxBound.y));
+        transform.position = clampedPosition;
     }
 }

@@ -8,9 +8,9 @@ public class GameConfigurations : MonoBehaviour {
     public static GameConfigurations Instance => _instance;
     
     [SerializeField] string _gameConfigsPath = default;
-    public struct GameConfigs {
-        public int PlayerSpeed;
-        public int RequieredExperience;
+    public class GameConfigs {
+        public int PlayerSpeed = default;
+        public int RequieredExperience = default;
     }
 
     GameConfigs _currentGameConfigs;

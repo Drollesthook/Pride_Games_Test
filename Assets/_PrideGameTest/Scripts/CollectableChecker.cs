@@ -8,8 +8,6 @@ using UnityEngine.InputSystem;
 
 public class CollectableChecker : MonoBehaviour {
 
-    public event Action PickableEntered, PickableExit;
-    
     [SerializeField] float _overlapRange = default;
     [SerializeField] LayerMask _collectableMask = default;
 
@@ -54,10 +52,6 @@ public class CollectableChecker : MonoBehaviour {
         if (_currentState == States.CanPickUpCoin && context.action.triggered) {
             var collectableObject = _colliders[0].GetComponent<ICollected>();
                  collectableObject?.Collect();
-            // foreach (var collider in _colliders) {
-            //     var collectableObject = collider.GetComponent<ICollected>();
-            //     collectableObject?.Collect();
-            // }
         }
     }
     
