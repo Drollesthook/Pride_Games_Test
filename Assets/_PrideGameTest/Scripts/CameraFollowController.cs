@@ -18,8 +18,6 @@ public class CameraFollowController : MonoBehaviour {
 
    void MoveToTarget() {
       Vector3 _targetPos = _objectToFollow.position + _offset;
-
-
       transform.position = Vector3.Lerp(transform.position, _targetPos, _followSpeed * Time.deltaTime);
    }
 }

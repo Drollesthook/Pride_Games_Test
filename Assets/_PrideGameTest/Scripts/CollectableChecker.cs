@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +9,8 @@ public class CollectableChecker : MonoBehaviour {
 
     Collider[] _colliders;
     
-    enum States{ WaitingForCollectable,
+    enum States{ 
+        WaitingForCollectable,
         CanPickUpCoin
     }
 

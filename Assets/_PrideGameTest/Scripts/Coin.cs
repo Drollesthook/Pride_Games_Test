@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Coin : MonoBehaviour, ICollected
 {
    void Update() {
-      transform.Rotate(Vector3.right * 100 * Time.deltaTime, Space.Self);
+      transform.Rotate(Vector3.right * 100 * Time.deltaTime, Space.Self);  //Jazz for my soul
    }
    
    public void Collect() {

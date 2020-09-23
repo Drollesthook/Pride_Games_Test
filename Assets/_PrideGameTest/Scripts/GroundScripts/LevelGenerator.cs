@@ -1,16 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
-
-using UnityEditor.Experimental.RestService;
-
 using UnityEngine;
-
 using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour {
-    static LevelGenerator _instance;
     public static LevelGenerator Instance => _instance;
     public int CurrentLevelObjectsAmount => _currentLevelObjectsAmount;
     public event Action LevelGenerated;
@@ -19,18 +13,18 @@ public class LevelGenerator : MonoBehaviour {
     [SerializeField] float _platformSize = default;
     [SerializeField] string _levelConfigsPath = default;
     
+    static LevelGenerator _instance;
     GameLevelConfigs _currentLevelConfig;
     List<Platform> _currentLevelPlatforms = new List<Platform>();
-    
     int _currentLevelObjectsAmount;
     Vector2 _maxBound, _minBound;
+    GameLevelConfigs[] _gameLevelConfigs;
     
     class GameLevelConfigs {
         public int FieldSize = default;
         public int MaximumAmountOfObjects = default;
     }
 
-    GameLevelConfigs[] _gameLevelConfigs;
     void Awake() {
         GameManager.Instance.LevelStarted += OnLevelStarted;
         _instance = this;

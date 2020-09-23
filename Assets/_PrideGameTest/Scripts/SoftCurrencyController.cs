@@ -1,16 +1,18 @@
 ﻿using System;
-
 using UnityEngine;
 
 public class SoftCurrencyController : MonoBehaviour {
-    static SoftCurrencyController _instance;
     public static SoftCurrencyController Instance => _instance;
 
     public int CurrentLevelObjectsCollected => _currentLevelObjectsCollected;
 
+    public int CoinAmount => _currentCoins;
+    public int CrystalAmount =>  _currentCrystals;
     public event Action CurrencyChanged;
+    
     [SerializeField] GameManager _gameManager = default;
 
+    static SoftCurrencyController _instance;
     const string COIN_AMOUNT = "coin_amount";
     const string CRYSTAL_AMOUNT = "crystal_amount";
     int _currentCoins;
@@ -57,17 +59,6 @@ public class SoftCurrencyController : MonoBehaviour {
         _currentLevelObjectsCollected++;
         CurrencyChanged?.Invoke();
     }
-
-
-    public int CoinAmount() {
-        return _currentCoins;
-    }
-
-    public int CrystalAmount() {
-        return _currentCrystals;
-    }
-
-
 
     void SaveCurrencyAmount() {
         PlayerPrefs.SetInt(COIN_AMOUNT, _currentCoins);

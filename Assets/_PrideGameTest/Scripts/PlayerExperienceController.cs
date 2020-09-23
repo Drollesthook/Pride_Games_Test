@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerExperienceController : MonoBehaviour {
 
@@ -13,10 +10,10 @@ public class PlayerExperienceController : MonoBehaviour {
     }
 
     public int CurrentPlayerLevel() {
-        return Mathf.CeilToInt(SoftCurrencyController.Instance.CrystalAmount() / _amountOfRequiredCrystals)+ _startLevel;
+        return Mathf.CeilToInt(SoftCurrencyController.Instance.CrystalAmount / _amountOfRequiredCrystals)+ _startLevel;
     }
 
     public int CurrentLevelExpirience() {
-        return SoftCurrencyController.Instance.CrystalAmount() % _amountOfRequiredCrystals;
+        return SoftCurrencyController.Instance.CrystalAmount % _amountOfRequiredCrystals;
     }
 }

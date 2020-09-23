@@ -1,12 +1,7 @@
-﻿using System.Collections;
-
-using TMPro;
-
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
-    static UIController _instance;
     public static UIController Instance => _instance;
 
     [SerializeField] GameManager _gameManager = default;
@@ -18,6 +13,7 @@ public class UIController : MonoBehaviour {
                               _pickUpText = default;
 
     float _currentSpeed, _highestSpeed, _currentDistance, _highestDistance;
+    static UIController _instance;
 
     void Awake() {
         _instance = this;
@@ -41,7 +37,7 @@ public class UIController : MonoBehaviour {
     }
 
     public void UpdateMenuTexts() {
-        _coinAmountText.text = "Gold:" + SoftCurrencyController.Instance.CoinAmount();
+        _coinAmountText.text = "Gold:" + SoftCurrencyController.Instance.CoinAmount;
         _crystalAmountText.text = _playerExperienceController.CurrentLevelExpirience() + "/" +
                                   GameConfigurations.Instance.CurrentGameConfigs.RequieredExperience;
         _currentPlayerLevelText.text = "Level:" + _playerExperienceController.CurrentPlayerLevel();
